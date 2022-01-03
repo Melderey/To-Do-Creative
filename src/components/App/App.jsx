@@ -1,14 +1,35 @@
 import React from "react";
+import { uniqueId } from "lodash";
 import "./App.css";
+import RenderForm from "../RenderForm/RenderForm";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { value: "Hello World" };
+    this.state = { newTaskText: "", tasks: [] };
+    this.handleSubmitForm = this.handleSubmitForm.bind(this);
+    this.handlerChangeText = this.handlerChangeText.bind(this);
+  }
+
+  handleSubmitForm(e) {
+    e.preventDefault();
+    const { tasks, newTaskText } = this.state;
+    const newTask = { id: uniqueId(), text: newTaskText };
+    this.setState(() => ({ newTaskText: "", tasks: [newTask, ...tasks] }));
+  }
+
+  handlerChangeTextForm(e) {
+    this.setState(() => ({ newTaskText: e.target.value }));
   }
 
   render() {
-    return <div>{this.state.value}</div>;
+    return (
+      <RenderForm
+        value={this.state}
+        handleSubmitForm={this.handleSubmitForm}
+        handlerChangeText={this.handlerChangeTextForm}
+      />
+    );
   }
 }
 
