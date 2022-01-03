@@ -8,7 +8,7 @@ class App extends React.Component {
     super(props);
     this.state = { newTaskText: "", tasks: [] };
     this.handleSubmitForm = this.handleSubmitForm.bind(this);
-    this.handlerChangeText = this.handlerChangeText.bind(this);
+    this.handlerChangeTextForm = this.handlerChangeTextForm.bind(this);
   }
 
   handleSubmitForm(e) {
@@ -27,7 +27,7 @@ class App extends React.Component {
       <RenderForm
         value={this.state}
         handleSubmitForm={this.handleSubmitForm}
-        handlerChangeText={this.handlerChangeTextForm}
+        handlerChangeTextForm={this.handlerChangeTextForm}
       />
     );
   }
