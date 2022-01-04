@@ -11,12 +11,17 @@ class App extends React.Component {
     this.handleSubmitForm = this.handleSubmitForm.bind(this);
     this.handlerChangeTextForm = this.handlerChangeTextForm.bind(this);
     this.handlerRemoveTask = this.handlerRemoveTask.bind(this);
+    this.handlerCheckboxActivate = this.handlerCheckboxActivate.bind(this);
   }
 
   handleSubmitForm(e) {
     e.preventDefault();
     const { tasks, newTaskText } = this.state;
-    const newTask = { id: uniqueId(), text: newTaskText };
+    const newTask = {
+      id: uniqueId(),
+      text: newTaskText,
+      checkboxActive: false,
+    };
     this.setState(() => ({ newTaskText: "", tasks: [newTask, ...tasks] }));
   }
 
@@ -27,6 +32,20 @@ class App extends React.Component {
   handlerRemoveTask(id) {
     const { tasks } = this.state;
     const newTasks = tasks.filter((task) => task.id !== id);
+    this.setState(() => ({
+      tasks: newTasks,
+    }));
+  }
+
+  handlerCheckboxActivate(id) {
+    const { tasks } = this.state;
+    const newTasks = tasks.map((task) => {
+      if (task.id === id) {
+        task.checkboxActive = !task.checkboxActive;
+      }
+      return task;
+    });
+
     this.setState(() => ({
       tasks: newTasks,
     }));
@@ -43,6 +62,7 @@ class App extends React.Component {
         <RenderTasks
           tasks={this.state.tasks}
           handlerRemoveTask={this.handlerRemoveTask}
+          handlerCheckboxActivate={this.handlerCheckboxActivate}
         />
       </>
     );
