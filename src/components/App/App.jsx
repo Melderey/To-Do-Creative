@@ -3,6 +3,7 @@ import { uniqueId } from "lodash";
 import "./App.css";
 import RenderForm from "../RenderForm/RenderForm";
 import RenderTasks from "../RenderTasks/RenderTasks";
+import checkTaskOverlap from "../../checkTaskOverlap";
 
 class App extends React.Component {
   constructor(props) {
@@ -17,9 +18,12 @@ class App extends React.Component {
   handleSubmitForm(e) {
     e.preventDefault();
     const { tasks, newTaskText } = this.state;
+    if (checkTaskOverlap(tasks, newTaskText)) {
+      return alert("Такая задача уже существует, введиет новую задачу!");
+    }
     const newTask = {
       id: uniqueId(),
-      text: newTaskText,
+      text: newTaskText.trim(),
       checkboxActive: false,
     };
     this.setState(() => ({ newTaskText: "", tasks: [newTask, ...tasks] }));
