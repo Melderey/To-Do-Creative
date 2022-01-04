@@ -18,12 +18,16 @@ class App extends React.Component {
   handleSubmitForm(e) {
     e.preventDefault();
     const { tasks, newTaskText } = this.state;
-    if (checkTaskOverlap(tasks, newTaskText)) {
+    const normalizeNewTaskText = newTaskText.trim();
+    if (normalizeNewTaskText.length === 0) {
+      return alert("Ввведиет новую задачу!");
+    }
+    if (checkTaskOverlap(tasks, normalizeNewTaskText)) {
       return alert("Такая задача уже существует, введиет новую задачу!");
     }
     const newTask = {
       id: uniqueId(),
-      text: newTaskText.trim(),
+      text: normalizeNewTaskText,
       checkboxActive: false,
     };
     this.setState(() => ({ newTaskText: "", tasks: [newTask, ...tasks] }));
