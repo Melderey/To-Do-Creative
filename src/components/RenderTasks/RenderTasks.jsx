@@ -4,7 +4,7 @@ export default class RenderTasks extends React.Component {
   render() {
     const { tasks, handlerRemoveTask, handlerCheckboxActivate } = this.props;
 
-    return tasks.map(({ id, text }) => {
+    return tasks.map(({ id, text, checkboxActive }) => {
       return (
         <div key={id}>
           <div>{text}</div>
@@ -12,7 +12,7 @@ export default class RenderTasks extends React.Component {
           <div>
             <input
               type="checkbox"
-              checked={tasks.checkboxActive}
+              checked={checkboxActive}
               onChange={() => handlerCheckboxActivate(id)}
             />
           </div>
