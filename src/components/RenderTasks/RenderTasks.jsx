@@ -2,9 +2,24 @@ import React from "react";
 
 export default class RenderTasks extends React.Component {
   render() {
-    const { tasks, handlerRemoveTask, handlerCheckboxActivate } = this.props;
+    const {
+      tasks,
+      statusSelectTask,
+      handlerRemoveTask,
+      handlerCheckboxActivate,
+    } = this.props;
 
-    return tasks.map(({ id, text, checkboxActive }) => {
+    let renderTask = [...tasks];
+
+    if (statusSelectTask === "uncompleted tasks") {
+      renderTask = tasks.filter((task) => !task.checkboxActive);
+    }
+
+    if (statusSelectTask === "completed task") {
+      renderTask = tasks.filter((task) => task.checkboxActive);
+    }
+
+    return renderTask.map(({ id, text, checkboxActive }) => {
       return (
         <div key={id}>
           <div>{text}</div>

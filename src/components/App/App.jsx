@@ -1,18 +1,20 @@
 import React from "react";
 import { uniqueId } from "lodash";
 import "./App.css";
+import checkTaskOverlap from "../../checkTaskOverlap";
 import RenderForm from "../RenderForm/RenderForm";
 import RenderTasks from "../RenderTasks/RenderTasks";
-import checkTaskOverlap from "../../checkTaskOverlap";
+import RenderSelectTasks from "../RenderSelectTasks/RenderSelectTasks";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { newTaskText: "", tasks: [] };
+    this.state = { newTaskText: "", statusSelectTask: "all tasks", tasks: [] };
     this.handleSubmitForm = this.handleSubmitForm.bind(this);
     this.handlerChangeTextForm = this.handlerChangeTextForm.bind(this);
     this.handlerRemoveTask = this.handlerRemoveTask.bind(this);
     this.handlerCheckboxActivate = this.handlerCheckboxActivate.bind(this);
+    this.handlerSelectTasks = this.handlerSelectTasks.bind(this);
   }
 
   handleSubmitForm(e) {
@@ -59,6 +61,10 @@ class App extends React.Component {
     }));
   }
 
+  handlerSelectTasks(e) {
+    this.setState(() => ({ statusSelectTask: e.target.value }));
+  }
+
   render() {
     return (
       <>
@@ -67,8 +73,13 @@ class App extends React.Component {
           handleSubmitForm={this.handleSubmitForm}
           handlerChangeTextForm={this.handlerChangeTextForm}
         />
+        <RenderSelectTasks
+          handlerSelectTasks={this.handlerSelectTasks}
+          statusSelectTask={this.state.statusSelectTask}
+        />
         <RenderTasks
           tasks={this.state.tasks}
+          statusSelectTask={this.state.statusSelectTask}
           handlerRemoveTask={this.handlerRemoveTask}
           handlerCheckboxActivate={this.handlerCheckboxActivate}
         />
