@@ -1,4 +1,5 @@
 import React from "react";
+import getFiltredTasks from "../../Functions/getFiltredTasks";
 import SelectStatusTask from "../SelectStatusTask/SelectStatusTask";
 
 export default class RenderTasks extends React.Component {
@@ -11,17 +12,9 @@ export default class RenderTasks extends React.Component {
       handlerSelectStatusTask,
     } = this.props;
 
-    let renderTask = [...tasks];
+    const filtredTasks = getFiltredTasks(tasks, statusSelectTask);
 
-    if (statusSelectTask === "uncompleted tasks") {
-      renderTask = tasks.filter((task) => !task.checkboxActive);
-    }
-
-    if (statusSelectTask === "completed task") {
-      renderTask = tasks.filter((task) => task.checkboxActive);
-    }
-
-    return renderTask.map(({ id, text, checkboxActive, statusTaskColor }) => {
+    return filtredTasks.map(({ id, text, checkboxActive, statusTaskColor }) => {
       const newStatusColor = { color: statusTaskColor };
 
       return (

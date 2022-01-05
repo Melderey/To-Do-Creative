@@ -1,7 +1,7 @@
 import React from "react";
 import { uniqueId } from "lodash";
 import "./App.css";
-import checkTaskOverlap from "../../checkTaskOverlap";
+import checkTaskOverlap from "../../Functions/checkTaskOverlap";
 import RenderForm from "../RenderForm/RenderForm";
 import RenderTasks from "../RenderTasks/RenderTasks";
 import RenderSelectTasks from "../RenderSelectTasks/RenderSelectTasks";
@@ -70,9 +70,6 @@ class App extends React.Component {
   handlerSelectStatusTask(e, id) {
     const { tasks } = this.state;
     const newStatusTaskColor = e.target.value;
-    console.log("tasks = ", tasks);
-    console.log("newStatusTask = ", newStatusTaskColor);
-    console.log("id = ", id);
     const newTasks = tasks.map((task) => {
       if (task.id === id) {
         task.statusTaskColor = newStatusTaskColor; // здесь можно оптимизировать и сразу менять статус таска через setState
