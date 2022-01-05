@@ -1,4 +1,5 @@
 import React from "react";
+import SelectStatusTask from "../SelectStatusTask/SelectStatusTask";
 
 export default class RenderTasks extends React.Component {
   render() {
@@ -7,6 +8,7 @@ export default class RenderTasks extends React.Component {
       statusSelectTask,
       handlerRemoveTask,
       handlerCheckboxActivate,
+      handlerSelectStatusTask,
     } = this.props;
 
     let renderTask = [...tasks];
@@ -19,11 +21,12 @@ export default class RenderTasks extends React.Component {
       renderTask = tasks.filter((task) => task.checkboxActive);
     }
 
-    return renderTask.map(({ id, text, checkboxActive }) => {
+    return renderTask.map(({ id, text, checkboxActive, statusTaskColor }) => {
+      const newStatusColor = { color: statusTaskColor };
+
       return (
         <div key={id}>
-          <div>{text}</div>
-
+          <div style={newStatusColor}>{text}</div>
           <div>
             <input
               type="checkbox"
@@ -31,10 +34,14 @@ export default class RenderTasks extends React.Component {
               onChange={() => handlerCheckboxActivate(id)}
             />
           </div>
-
           <div>
             <button onClick={() => handlerRemoveTask(id)}>X</button>
           </div>
+          <SelectStatusTask
+            handlerSelectStatusTask={handlerSelectStatusTask}
+            id={id}
+            statusTaskColor={statusTaskColor}
+          />
           <hr />
         </div>
       );

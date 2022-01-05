@@ -15,6 +15,7 @@ class App extends React.Component {
     this.handlerRemoveTask = this.handlerRemoveTask.bind(this);
     this.handlerCheckboxActivate = this.handlerCheckboxActivate.bind(this);
     this.handlerSelectTasks = this.handlerSelectTasks.bind(this);
+    this.handlerSelectStatusTask = this.handlerSelectStatusTask.bind(this);
   }
 
   handleSubmitForm(e) {
@@ -31,6 +32,7 @@ class App extends React.Component {
       id: uniqueId(),
       text: normalizeNewTaskText,
       checkboxActive: false,
+      statusTaskColor: "black",
     };
     this.setState(() => ({ newTaskText: "", tasks: [newTask, ...tasks] }));
   }
@@ -51,7 +53,7 @@ class App extends React.Component {
     const { tasks } = this.state;
     const newTasks = tasks.map((task) => {
       if (task.id === id) {
-        task.checkboxActive = !task.checkboxActive;
+        task.checkboxActive = !task.checkboxActive; // здесь можно оптимизировать и сразу менять статус таска через setState
       }
       return task;
     });
@@ -63,6 +65,24 @@ class App extends React.Component {
 
   handlerSelectTasks(e) {
     this.setState(() => ({ statusSelectTask: e.target.value }));
+  }
+
+  handlerSelectStatusTask(e, id) {
+    const { tasks } = this.state;
+    const newStatusTaskColor = e.target.value;
+    console.log("tasks = ", tasks);
+    console.log("newStatusTask = ", newStatusTaskColor);
+    console.log("id = ", id);
+    const newTasks = tasks.map((task) => {
+      if (task.id === id) {
+        task.statusTaskColor = newStatusTaskColor; // здесь можно оптимизировать и сразу менять статус таска через setState
+      }
+      return task;
+    });
+
+    this.setState(() => ({
+      tasks: newTasks,
+    }));
   }
 
   render() {
@@ -82,6 +102,7 @@ class App extends React.Component {
           statusSelectTask={this.state.statusSelectTask}
           handlerRemoveTask={this.handlerRemoveTask}
           handlerCheckboxActivate={this.handlerCheckboxActivate}
+          handlerSelectStatusTask={this.handlerSelectStatusTask}
         />
       </>
     );
