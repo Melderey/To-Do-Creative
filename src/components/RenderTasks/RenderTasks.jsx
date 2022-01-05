@@ -1,5 +1,5 @@
 import React from "react";
-import getFiltredTasks from "../../Functions/getFiltredTasks";
+import getFiltredTasks from "../../functions/getFiltredTasks";
 import SelectStatusTask from "../SelectStatusTask/SelectStatusTask";
 
 export default class RenderTasks extends React.Component {

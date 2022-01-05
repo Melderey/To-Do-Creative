@@ -1,7 +1,7 @@
 import React from "react";
 import { uniqueId } from "lodash";
 import "./App.css";
-import checkTaskOverlap from "../../Functions/checkTaskOverlap";
+import checkTaskOverlap from "../../functions/checkTaskOverlap";
 import RenderForm from "../RenderForm/RenderForm";
 import RenderTasks from "../RenderTasks/RenderTasks";
 import RenderSelectTasks from "../RenderSelectTasks/RenderSelectTasks";
