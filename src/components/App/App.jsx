@@ -1,7 +1,7 @@
 import React from "react";
 import { uniqueId } from "lodash";
 import "./App.css";
-import checkTaskOverlap from "../../checkTaskOverlap";
+import checkTaskOverlap from "../../Functions/checkTaskOverlap";
 import RenderForm from "../RenderForm/RenderForm";
 import RenderTasks from "../RenderTasks/RenderTasks";
 import RenderSelectTasks from "../RenderSelectTasks/RenderSelectTasks";
@@ -10,12 +10,14 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = { newTaskText: "", statusSelectTask: "all tasks", tasks: [] };
+
     this.handleSubmitForm = this.handleSubmitForm.bind(this);
     this.handlerChangeTextForm = this.handlerChangeTextForm.bind(this);
     this.handlerRemoveTask = this.handlerRemoveTask.bind(this);
     this.handlerCheckboxActivate = this.handlerCheckboxActivate.bind(this);
     this.handlerSelectTasks = this.handlerSelectTasks.bind(this);
     this.handlerSelectStatusTask = this.handlerSelectStatusTask.bind(this);
+    this.handleraClearAll = this.handleraClearAll.bind(this);
   }
 
   handleSubmitForm(e) {
@@ -70,9 +72,6 @@ class App extends React.Component {
   handlerSelectStatusTask(e, id) {
     const { tasks } = this.state;
     const newStatusTaskColor = e.target.value;
-    console.log("tasks = ", tasks);
-    console.log("newStatusTask = ", newStatusTaskColor);
-    console.log("id = ", id);
     const newTasks = tasks.map((task) => {
       if (task.id === id) {
         task.statusTaskColor = newStatusTaskColor; // здесь можно оптимизировать и сразу менять статус таска через setState
@@ -85,9 +84,19 @@ class App extends React.Component {
     }));
   }
 
+  handleraClearAll(e) {
+    e.preventDefault();
+    this.setState(() => ({
+      newTaskText: "",
+      statusSelectTask: "all tasks",
+      tasks: [],
+    }));
+  }
+
   render() {
     return (
-      <>
+      <div>
+        <button onClick={this.handleraClearAll}>Clear all</button>
         <RenderForm
           value={this.state}
           handleSubmitForm={this.handleSubmitForm}
@@ -104,7 +113,7 @@ class App extends React.Component {
           handlerCheckboxActivate={this.handlerCheckboxActivate}
           handlerSelectStatusTask={this.handlerSelectStatusTask}
         />
-      </>
+      </div>
     );
   }
 }
