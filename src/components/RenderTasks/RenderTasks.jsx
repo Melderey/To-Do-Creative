@@ -25,11 +25,14 @@ export default class RenderTasks extends React.Component {
               <p>{text}</p>
             </div>
             <div>
-              <input
-                type="checkbox"
-                checked={checkboxActive}
-                onChange={() => handlerCheckboxActivate(id)}
-              />
+              <p>
+                <input
+                  type="checkbox"
+                  checked={checkboxActive}
+                  onChange={() => handlerCheckboxActivate(id)}
+                />
+                Сделано
+              </p>
               <button onClick={() => handlerRemoveTask(id)}>X</button>
             </div>
           </div>

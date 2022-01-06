@@ -97,8 +97,8 @@ class App extends React.Component {
     return (
       <div className="container">
         <div className="divFlexStart">
-          <h2>To-Do</h2>
-          <button onClick={this.handleraClearAll}>Clear all</button>
+          <h2>Список задач</h2>
+          <button onClick={this.handleraClearAll}>Очистить всё</button>
         </div>
         <div>
           <RenderForm

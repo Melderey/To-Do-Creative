@@ -1,5 +1,5 @@
 import React from "react";
-import "./RenderForm.css";
+/* import "./RenderForm.css"; */
 
 export default class RenderForm extends React.Component {
   render() {
@@ -15,7 +15,7 @@ export default class RenderForm extends React.Component {
             placeholder="Введите текст"
           />
         </div>
-        <button type="submit">add</button>
+        <button type="submit">Добавить</button>
       </form>
     );
   }
