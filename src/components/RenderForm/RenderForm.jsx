@@ -6,7 +6,7 @@ export default class RenderForm extends React.Component {
     const { value, handleSubmitForm, handlerChangeTextForm } = this.props;
 
     return (
-      <form onSubmit={handleSubmitForm} className="divFlexStart">
+      <form onSubmit={handleSubmitForm} className="divFlex">
         <div>
           <input
             type="text"

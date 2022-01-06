@@ -96,9 +96,13 @@ class App extends React.Component {
   render() {
     return (
       <div className="container">
-        <div className="divFlexStart">
+        <div className="divF-flex">
           <h2>Список задач</h2>
-          <button onClick={this.handleraClearAll}>Очистить всё</button>
+          <div className="button-div">
+            <button className="button-danger" onClick={this.handleraClearAll}>
+              Очистить всё
+            </button>
+          </div>
         </div>
         <div>
           <RenderForm
