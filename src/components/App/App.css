@@ -2,8 +2,6 @@
   font-weight: 400; /* Соответствует значению normal */
   font-family: "Open Sans";
   src: url("../../fonts/OpenSans/OpenSans-Regular.ttf");
-
-  /* src: url("../fonts/OpenSans/OpenSans-Regular.ttf"); */
 }
 
 @font-face {
@@ -52,10 +50,4 @@
 .button-danger:hover {
   background-color: #e47983;
   color: #555;
-}
-
-hr {
-  margin: 0;
-  margin-top: 0.3rem;
-  padding: 0;
 }
