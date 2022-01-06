@@ -1,10 +1,30 @@
+@font-face {
+  font-weight: 400; /* Соответствует значению normal */
+  font-family: "Open Sans";
+  src: url("../../fonts/OpenSans/OpenSans-Regular.ttf");
+
+  /* src: url("../fonts/OpenSans/OpenSans-Regular.ttf"); */
+}
+
+@font-face {
+  font-weight: 700; /* Соответствует значению bold */
+  font-family: "Open Sans";
+  src: url("../../fonts/OpenSans/OpenSans-Bold.ttf");
+}
+
+@font-face {
+  font-weight: 300; /* Соответствует значению light */
+  font-family: "Open Sans";
+  src: url("../../fonts/OpenSans/OpenSans-Light.ttf");
+}
+
 .container {
   color: #6c757d;
   max-width: 547px;
   min-width: 35vw;
   margin: 50px auto 50px auto;
   padding: 0px 5px;
-  font: 18px/1.5 arial, sans-serif;
+  font: 18px/1.5 "Open Sans", arial, sans-serif;
 }
 
 .divF-flex {
