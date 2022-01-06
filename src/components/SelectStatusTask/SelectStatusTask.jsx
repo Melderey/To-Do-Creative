@@ -1,4 +1,5 @@
 import React from "react";
+import "./SelectStatusTask.css";
 
 export default class SelectStatusTask extends React.Component {
   render() {

@@ -95,13 +95,18 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
-        <button onClick={this.handleraClearAll}>Clear all</button>
-        <RenderForm
-          value={this.state}
-          handleSubmitForm={this.handleSubmitForm}
-          handlerChangeTextForm={this.handlerChangeTextForm}
-        />
+      <div className="container">
+        <div className="divFlexStart">
+          <h2>To-Do</h2>
+          <button onClick={this.handleraClearAll}>Clear all</button>
+        </div>
+        <div>
+          <RenderForm
+            value={this.state}
+            handleSubmitForm={this.handleSubmitForm}
+            handlerChangeTextForm={this.handlerChangeTextForm}
+          />
+        </div>
         <RenderSelectTasks
           handlerSelectTasks={this.handlerSelectTasks}
           statusSelectTask={this.state.statusSelectTask}

@@ -1,0 +1,6 @@
+.divFlexStart {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  overflow: auto; /* hidden обрежет выходящий текст */
+}

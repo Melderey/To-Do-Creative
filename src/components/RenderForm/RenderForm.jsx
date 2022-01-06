@@ -1,11 +1,12 @@
 import React from "react";
+import "./RenderForm.css";
 
 export default class RenderForm extends React.Component {
   render() {
     const { value, handleSubmitForm, handlerChangeTextForm } = this.props;
 
     return (
-      <form onSubmit={handleSubmitForm}>
+      <form onSubmit={handleSubmitForm} className="divFlexStart">
         <div>
           <input
             type="text"

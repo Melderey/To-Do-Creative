@@ -1,6 +1,7 @@
 import React from "react";
 import getFiltredTasks from "../../functions/getFiltredTasks";
 import SelectStatusTask from "../SelectStatusTask/SelectStatusTask";
+import "./RenderTasks.css";
 
 export default class RenderTasks extends React.Component {
   render() {
@@ -19,23 +20,25 @@ export default class RenderTasks extends React.Component {
 
       return (
         <div key={id}>
-          <div style={newStatusColor}>{text}</div>
-          <div>
-            <input
-              type="checkbox"
-              checked={checkboxActive}
-              onChange={() => handlerCheckboxActivate(id)}
-            />
+          <div className="divFlexStart">
+            <div style={newStatusColor}>
+              <p>{text}</p>
+            </div>
+            <div>
+              <input
+                type="checkbox"
+                checked={checkboxActive}
+                onChange={() => handlerCheckboxActivate(id)}
+              />
+              <button onClick={() => handlerRemoveTask(id)}>X</button>
+            </div>
           </div>
-          <div>
-            <button onClick={() => handlerRemoveTask(id)}>X</button>
-          </div>
+
           <SelectStatusTask
             handlerSelectStatusTask={handlerSelectStatusTask}
             id={id}
             statusTaskColor={statusTaskColor}
           />
-          <hr />
         </div>
       );
     });
