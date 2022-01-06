@@ -20,7 +20,7 @@ export default class RenderTasks extends React.Component {
 
       return (
         <div key={id}>
-          <div className="divF-flex div-flex-wrap">
+          <div className="div-flex div-flex-wrap">
             <div style={newStatusColor}>
               <p>{text}</p>
             </div>

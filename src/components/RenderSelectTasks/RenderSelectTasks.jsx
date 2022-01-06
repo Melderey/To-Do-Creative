@@ -9,7 +9,7 @@ export default class RenderSelectTasks extends React.Component {
       <select
         value={statusSelectTask}
         onChange={handlerSelectTasks}
-        /* className="divFlexStart" */
+        className="select-render"
       >
         <option value="all tasks">Показать все задачи</option>
         <option value="uncompleted tasks">Показать невыполненные задачи</option>

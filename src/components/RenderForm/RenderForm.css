@@ -1,4 +1,33 @@
-/* .divFlexStart {
-  display: flex;
-  justify-content: space-between;
-} */
+.input-render {
+  display: block;
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  outline-color: #5f93e0;
+}
+
+.button-submit {
+  padding: 0.375rem 0.75rem;
+  margin: 0;
+  cursor: pointer;
+  border: 1px solid #4cb150;
+  color: #4cb150;
+  background-color: #fff;
+  border-radius: 0.25rem;
+  margin-left: 1.5rem;
+  font-size: 0.75rem;
+}
+
+.button-submit:hover {
+  background-color: #67cf6b;
+  color: #555;
+}
+
+.input-render:hover {
+  border: 1px solid #94b6e9;
+}

@@ -96,7 +96,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="container">
-        <div className="divF-flex">
+        <div className="div-flex">
           <h2>Список задач</h2>
           <div className="button-div">
             <button className="button-danger" onClick={this.handleraClearAll}>

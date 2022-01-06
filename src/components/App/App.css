@@ -24,10 +24,10 @@
   min-width: 35vw;
   margin: 50px auto 50px auto;
   padding: 0px 5px;
-  font: 18px/1.5 "Open Sans", arial, sans-serif;
+  font: 24px/1.5 "Open Sans", arial, sans-serif;
 }
 
-.divF-flex {
+.div-flex {
   display: flex;
   justify-content: space-between;
 }
@@ -39,13 +39,14 @@
 }
 
 .button-danger {
-  padding: 8px 10px;
-  margin: 0;
+  padding: 0.675rem 0.75rem;
+  margin-left: 1.5rem;
   cursor: pointer;
   border: 1px solid #dc3545;
   color: #dc3545;
   background-color: #fff;
-  border-radius: 4px;
+  border-radius: 0.25rem;
+  font-size: 1rem;
 }
 
 .button-danger:hover {
