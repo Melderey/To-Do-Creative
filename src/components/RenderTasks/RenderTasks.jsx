@@ -21,19 +21,25 @@ export default class RenderTasks extends React.Component {
       return (
         <div key={id}>
           <div className="div-flex div-flex-wrap">
-            <div style={newStatusColor}>
-              <p>{text}</p>
-            </div>
+            <p style={newStatusColor} className="task-text">
+              {text}
+            </p>
             <div>
-              <p>
+              <div className="div-flex buttons-renders">
                 <input
+                  className="checkbox-render"
                   type="checkbox"
                   checked={checkboxActive}
                   onChange={() => handlerCheckboxActivate(id)}
                 />
-                Сделано
-              </p>
-              <button onClick={() => handlerRemoveTask(id)}>X</button>
+                <p>Сделано</p>
+                <button
+                  className="button-remove"
+                  onClick={() => handlerRemoveTask(id)}
+                >
+                  X
+                </button>
+              </div>
             </div>
           </div>
 
