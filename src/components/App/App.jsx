@@ -1,7 +1,14 @@
 import React from "react";
-import { uniqueId } from "lodash";
 import "./App.css";
-import checkTaskOverlap from "../../functions/checkTaskOverlap";
+
+import handlerChangeTextForm from "./handlersApp/handlerChangeTextForm";
+import handleSubmitForm from "./handlersApp/handleSubmitForm";
+import handlerRemoveTask from "./handlersApp/handlerRemoveTask";
+import handlerCheckboxActivate from "./handlersApp/handlerCheckboxActivate";
+import handlerSelectTasks from "./handlersApp/handlerSelectTasks";
+import handlerSelectStatusTask from "./handlersApp/handlerSelectStatusTask";
+import handleraClearAll from "./handlersApp/handleraClearAll";
+
 import RenderForm from "../RenderForm/RenderForm";
 import RenderTasks from "../RenderTasks/RenderTasks";
 import RenderSelectTasks from "../RenderSelectTasks/RenderSelectTasks";
@@ -11,86 +18,13 @@ class App extends React.Component {
     super(props);
     this.state = { newTaskText: "", statusSelectTask: "all tasks", tasks: [] };
 
-    this.handleSubmitForm = this.handleSubmitForm.bind(this);
-    this.handlerChangeTextForm = this.handlerChangeTextForm.bind(this);
-    this.handlerRemoveTask = this.handlerRemoveTask.bind(this);
-    this.handlerCheckboxActivate = this.handlerCheckboxActivate.bind(this);
-    this.handlerSelectTasks = this.handlerSelectTasks.bind(this);
-    this.handlerSelectStatusTask = this.handlerSelectStatusTask.bind(this);
-    this.handleraClearAll = this.handleraClearAll.bind(this);
-  }
-
-  handleSubmitForm(e) {
-    e.preventDefault();
-    const { tasks, newTaskText } = this.state;
-    const normalizeNewTaskText = newTaskText.trim();
-    if (normalizeNewTaskText.length === 0) {
-      return alert("Ввведиет новую задачу!");
-    }
-    if (checkTaskOverlap(tasks, normalizeNewTaskText)) {
-      return alert("Такая задача уже существует, введиет новую задачу!");
-    }
-    const newTask = {
-      id: uniqueId(),
-      text: normalizeNewTaskText,
-      checkboxActive: false,
-      statusTaskColor: "black",
-    };
-    this.setState(() => ({ newTaskText: "", tasks: [newTask, ...tasks] }));
-  }
-
-  handlerChangeTextForm(e) {
-    this.setState(() => ({ newTaskText: e.target.value }));
-  }
-
-  handlerRemoveTask(id) {
-    const { tasks } = this.state;
-    const newTasks = tasks.filter((task) => task.id !== id);
-    this.setState(() => ({
-      tasks: newTasks,
-    }));
-  }
-
-  handlerCheckboxActivate(id) {
-    const { tasks } = this.state;
-    const newTasks = tasks.map((task) => {
-      if (task.id === id) {
-        task.checkboxActive = !task.checkboxActive; // здесь можно оптимизировать и сразу менять статус таска через setState
-      }
-      return task;
-    });
-
-    this.setState(() => ({
-      tasks: newTasks,
-    }));
-  }
-
-  handlerSelectTasks(e) {
-    this.setState(() => ({ statusSelectTask: e.target.value }));
-  }
-
-  handlerSelectStatusTask(e, id) {
-    const { tasks } = this.state;
-    const newStatusTaskColor = e.target.value;
-    const newTasks = tasks.map((task) => {
-      if (task.id === id) {
-        task.statusTaskColor = newStatusTaskColor; // здесь можно оптимизировать и сразу менять статус таска через setState
-      }
-      return task;
-    });
-
-    this.setState(() => ({
-      tasks: newTasks,
-    }));
-  }
-
-  handleraClearAll(e) {
-    e.preventDefault();
-    this.setState(() => ({
-      newTaskText: "",
-      statusSelectTask: "all tasks",
-      tasks: [],
-    }));
+    this.handleSubmitForm = handleSubmitForm.bind(this);
+    this.handlerChangeTextForm = handlerChangeTextForm.bind(this);
+    this.handlerRemoveTask = handlerRemoveTask.bind(this);
+    this.handlerCheckboxActivate = handlerCheckboxActivate.bind(this);
+    this.handlerSelectTasks = handlerSelectTasks.bind(this);
+    this.handlerSelectStatusTask = handlerSelectStatusTask.bind(this);
+    this.handleraClearAll = handleraClearAll.bind(this);
   }
 
   render() {
