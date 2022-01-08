@@ -15,6 +15,7 @@ function handleSubmitForm(e) {
     id: uniqueId(),
     text: normalizeNewTaskText,
     checkboxActive: false,
+    isTaskEdit: false,
     statusTaskColor: "black",
   };
   this.setState(() => ({ newTaskText: "", tasks: [newTask, ...tasks] }));

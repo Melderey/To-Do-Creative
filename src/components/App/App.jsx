@@ -8,6 +8,8 @@ import handlerCheckboxActivate from "./handlersApp/handlerCheckboxActivate";
 import handlerSelectTasks from "./handlersApp/handlerSelectTasks";
 import handlerSelectStatusTask from "./handlersApp/handlerSelectStatusTask";
 import handleraClearAll from "./handlersApp/handleraClearAll";
+import handlerTaskEdit from "./handlersApp/handlerTaskEdit";
+import handlerTaskButtonEdit from "./handlersApp/handlerTaskButtonEdit";
 
 import RenderForm from "../RenderForm/RenderForm";
 import RenderTasks from "../RenderTasks/RenderTasks";
@@ -25,6 +27,8 @@ class App extends React.Component {
     this.handlerSelectTasks = handlerSelectTasks.bind(this);
     this.handlerSelectStatusTask = handlerSelectStatusTask.bind(this);
     this.handleraClearAll = handleraClearAll.bind(this);
+    this.handlerTaskEdit = handlerTaskEdit.bind(this);
+    this.handlerTaskButtonEdit = handlerTaskButtonEdit.bind(this);
   }
 
   render() {
@@ -55,6 +59,8 @@ class App extends React.Component {
           handlerRemoveTask={this.handlerRemoveTask}
           handlerCheckboxActivate={this.handlerCheckboxActivate}
           handlerSelectStatusTask={this.handlerSelectStatusTask}
+          handlerTaskButtonEdit={this.handlerTaskButtonEdit}
+          handlerTaskEdit={this.handlerTaskEdit}
         />
       </div>
     );
