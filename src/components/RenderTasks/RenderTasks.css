@@ -38,9 +38,6 @@
 
 .task-text {
   text-align: justify;
-  font-size:0.9rem;
-  margin-right: 0.5rem;
-  margin-left: 0.5rem;
-  margin-top: 1rem;
-  margin-bottom: 0;
+  font-size: 0.9rem;
+  margin: 0 0.5rem;
 }
