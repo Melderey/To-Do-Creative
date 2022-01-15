@@ -51,3 +51,18 @@
   background-color: #e47983;
   color: #555;
 }
+
+.button-simulated {
+  padding: 0.675rem 0.75rem;
+  cursor: pointer;
+  border: 1px solid #358bdc;
+  color: #358bdc;
+  background-color: #fff;
+  border-radius: 0.25rem;
+  font-size: 0.8rem;
+}
+
+.button-simulated:hover {
+  background-color: #358bdcc4;
+  color: #555;
+}

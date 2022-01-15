@@ -1,6 +1,8 @@
 import React from "react";
 import "./App.css";
 
+import withTimerImitation from "../../HOC/withTimerImitation";
+
 import handlerChangeTextForm from "./handlersApp/handlerChangeTextForm";
 import handleSubmitForm from "./handlersApp/handleSubmitForm";
 import handlerRemoveTask from "./handlersApp/handlerRemoveTask";
@@ -14,6 +16,7 @@ import handlerTaskButtonEdit from "./handlersApp/handlerTaskButtonEdit";
 import RenderForm from "../RenderForm/RenderForm";
 import RenderTasks from "../RenderTasks/RenderTasks";
 import RenderSelectTasks from "../RenderSelectTasks/RenderSelectTasks";
+import Loader from "../Loader/Loader";
 
 class App extends React.Component {
   constructor(props) {
@@ -32,8 +35,15 @@ class App extends React.Component {
   }
 
   render() {
+    const delay = 3000;
+    const LoaderWithTimer = withTimerImitation(Loader, delay);
+
     return (
       <div className="container">
+        <div>
+          <LoaderWithTimer />
+        </div>
+
         <div className="div-flex">
           <h2>Список задач</h2>
           <div className="button-div">
