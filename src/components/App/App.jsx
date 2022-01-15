@@ -14,11 +14,32 @@ import handlerTaskButtonEdit from "./handlersApp/handlerTaskButtonEdit";
 import RenderForm from "../RenderForm/RenderForm";
 import RenderTasks from "../RenderTasks/RenderTasks";
 import RenderSelectTasks from "../RenderSelectTasks/RenderSelectTasks";
+import ThemeTogglerButton from "../ThemeTogglerButton/ThemeTogglerButton";
+
+import { ThemeContext, themesColor } from "../../context/theme-context";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { newTaskText: "", statusSelectTask: "all tasks", tasks: [] };
+
+    this.toggleTheme = () => {
+      this.setState((state) => {
+        return {
+          themeColor:
+            state.themeColor === themesColor.dark
+              ? themesColor.light
+              : themesColor.dark,
+        };
+      });
+    };
+
+    this.state = {
+      newTaskText: "",
+      statusSelectTask: "all tasks",
+      themeColor: themesColor.light,
+      toggleTheme: this.toggleTheme,
+      tasks: [],
+    };
 
     this.handleSubmitForm = handleSubmitForm.bind(this);
     this.handlerChangeTextForm = handlerChangeTextForm.bind(this);
@@ -32,8 +53,19 @@ class App extends React.Component {
   }
 
   render() {
+    const installBodyStyle = () =>
+      (document.body.className = this.state.themeColor);
+
+    installBodyStyle();
+
     return (
       <div className="container">
+        <div>
+          <ThemeContext.Provider value={this.state.toggleTheme}>
+            <ThemeTogglerButton />
+          </ThemeContext.Provider>
+        </div>
+
         <div className="div-flex">
           <h2>Список задач</h2>
           <div className="button-div">
@@ -42,6 +74,7 @@ class App extends React.Component {
             </button>
           </div>
         </div>
+
         <div>
           <RenderForm
             value={this.state}
@@ -49,10 +82,12 @@ class App extends React.Component {
             handlerChangeTextForm={this.handlerChangeTextForm}
           />
         </div>
+
         <RenderSelectTasks
           handlerSelectTasks={this.handlerSelectTasks}
           statusSelectTask={this.state.statusSelectTask}
         />
+
         <RenderTasks
           tasks={this.state.tasks}
           statusSelectTask={this.state.statusSelectTask}
