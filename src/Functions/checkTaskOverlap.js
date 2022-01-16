@@ -1,6 +1,6 @@
 const checkTaskOverlap = (tasks, newTaskText) => {
   for (const { text } of tasks) {
-    if (text === newTaskText) {
+    if (text.toLowerCase() === newTaskText.toLowerCase()) {
       return true;
     }
   }

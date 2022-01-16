@@ -1,4 +1,5 @@
 import React from "react";
+import { BLACK, RED, GREEN, ORANGE, BLUE } from "../../constants/constants";
 
 export default class SelectStatusTask extends React.Component {
   render() {
@@ -10,11 +11,11 @@ export default class SelectStatusTask extends React.Component {
         onChange={(e) => handlerSelectStatusTask(e, id)}
         className="select-render"
       >
-        <option value={"black"}>Выберите приоритет задачи</option>
-        <option value={"red"}>Срочно, важно</option>
-        <option value={"green"}>Не срочно, важно</option>
-        <option value={"orange"}>Срочно, не важно</option>
-        <option value={"blue"}>Не срочно, не важно</option>
+        <option value={BLACK}>Выберите приоритет задачи</option>
+        <option value={RED}>Срочно, важно</option>
+        <option value={GREEN}>Не срочно, важно</option>
+        <option value={ORANGE}>Срочно, не важно</option>
+        <option value={BLUE}>Не срочно, не важно</option>
       </select>
     );
   }
