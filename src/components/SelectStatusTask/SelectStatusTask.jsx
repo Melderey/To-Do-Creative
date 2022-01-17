@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { BLACK, RED, GREEN, ORANGE, BLUE } from "../../constants/constants";
 
 export default class SelectStatusTask extends React.Component {
@@ -20,3 +21,9 @@ export default class SelectStatusTask extends React.Component {
     );
   }
 }
+
+SelectStatusTask.propTypes = {
+  handlerSelectStatusTask: PropTypes.func.isRequired,
+  id: PropTypes.string.isRequired,
+  statusTaskColor: PropTypes.string.isRequired,
+};
