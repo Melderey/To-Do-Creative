@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import "./RenderSelectTasks.css";
 import {
   UNCOMPLETED_TASKS,
@@ -23,3 +24,8 @@ export default class RenderSelectTasks extends React.Component {
     );
   }
 }
+
+RenderSelectTasks.propTypes = {
+  statusSelectTask: PropTypes.string.isRequired,
+  handlerSelectTasks: PropTypes.func.isRequired,
+};

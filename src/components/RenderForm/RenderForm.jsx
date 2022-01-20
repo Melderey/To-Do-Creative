@@ -1,5 +1,6 @@
 import React from "react";
 import "./RenderForm.css";
+import PropTypes from "prop-types";
 
 export default class RenderForm extends React.Component {
   render() {
@@ -22,3 +23,9 @@ export default class RenderForm extends React.Component {
     );
   }
 }
+
+RenderForm.propTypes = {
+  newTaskText: PropTypes.string.isRequired,
+  handleSubmitForm: PropTypes.func.isRequired,
+  handlerChangeTextForm: PropTypes.func.isRequired,
+};

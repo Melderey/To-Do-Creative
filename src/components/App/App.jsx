@@ -12,7 +12,7 @@ import RenderSelectTasks from "../RenderSelectTasks/RenderSelectTasks";
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { newTaskText: "", statusSelectTask: "all tasks", tasks: [] };
+    this.state = { newTaskText: "", statusSelectTask: ALL_TASKS, tasks: [] };
 
     this.handleSubmitForm = this.handleSubmitForm.bind(this);
     this.handlerChangeTextForm = this.handlerChangeTextForm.bind(this);

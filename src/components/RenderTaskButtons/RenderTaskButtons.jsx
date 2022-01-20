@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 export default class RenderTaskButtons extends React.Component {
   render() {
@@ -36,3 +37,11 @@ export default class RenderTaskButtons extends React.Component {
     );
   }
 }
+
+RenderTaskButtons.propTypes = {
+  checkboxActive: PropTypes.bool.isRequired,
+  id: PropTypes.string.isRequired,
+  handlerRemoveTask: PropTypes.func.isRequired,
+  handlerCheckboxActivate: PropTypes.func.isRequired,
+  handlerTaskButtonEdit: PropTypes.func.isRequired,
+};

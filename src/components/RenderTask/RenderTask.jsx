@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import RenderTaskIsEdit from "../RenderTaskIsEdit/RenderTaskIsEdit";
 import RenderTaskButtons from "../RenderTaskButtons/RenderTaskButtons";
 import SelectStatusTask from "../SelectStatusTask/SelectStatusTask";
@@ -40,3 +41,8 @@ export default class RenderTask extends React.Component {
     );
   }
 }
+
+RenderTask.propTypes = {
+  handlerSelectStatusTask: PropTypes.func.isRequired,
+  filtredTasks: PropTypes.array.isRequired,
+};

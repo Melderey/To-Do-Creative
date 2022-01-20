@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import getFiltredTasks from "../../functions/getFiltredTasks";
 import RenderTask from "../RenderTask/RenderTask";
 import "./RenderTasks.css";
@@ -16,3 +17,9 @@ export default class RenderTasks extends React.Component {
     );
   }
 }
+
+RenderTasks.propTypes = {
+  statusSelectTask: PropTypes.string.isRequired,
+  tasks: PropTypes.array.isRequired,
+};
+
