@@ -8,11 +8,32 @@ import { ALL_TASKS, BLACK } from "../../constants/constants";
 import RenderForm from "../RenderForm/RenderForm";
 import RenderTasks from "../RenderTasks/RenderTasks";
 import RenderSelectTasks from "../RenderSelectTasks/RenderSelectTasks";
+import ThemeTogglerButton from "../ThemeTogglerButton/ThemeTogglerButton";
+
+import { ThemeContext, themesColor } from "../../context/theme-context";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { newTaskText: "", statusSelectTask: ALL_TASKS, tasks: [] };
+
+    this.toggleTheme = () => {
+      this.setState((state) => {
+        return {
+          themeColor:
+            state.themeColor === themesColor.dark
+              ? themesColor.light
+              : themesColor.dark,
+        };
+      });
+    };
+
+    this.state = {
+      newTaskText: "",
+      statusSelectTask: ALL_TASKS,
+      tthemeColor: themesColor.light,
+      toggleTheme: this.toggleTheme,
+      tasks: [],
+    };
 
     this.handleSubmitForm = this.handleSubmitForm.bind(this);
     this.handlerChangeTextForm = this.handlerChangeTextForm.bind(this);
@@ -134,9 +155,19 @@ class App extends React.Component {
     });
   }
 
+  componentDidUpdate() {
+    document.body.className = this.state.themeColor;
+  }
+
   render() {
     return (
       <div className="container">
+        <div>
+          <ThemeContext.Provider value={this.state.toggleTheme}>
+            <ThemeTogglerButton />
+          </ThemeContext.Provider>
+        </div>
+
         <div className="div-flex">
           <h2>Список задач</h2>
 

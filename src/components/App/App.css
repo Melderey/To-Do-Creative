@@ -16,6 +16,16 @@
   src: url("../../fonts/OpenSans/OpenSans-Light.ttf");
 }
 
+.body-dark-theme {
+  background-color: #373737;
+  filter: invert(100) hue-rotate(180deg);
+}
+
+.option-dark-theme option {
+  color: #6c757d;
+  background: #1b1b1b;
+}
+
 .container {
   color: #6c757d;
   max-width: 547px;
@@ -79,4 +89,19 @@ ul {
 
 .status-task-color-blue {
   color: blue;
+}
+
+.button-theme-toggler {
+  padding: 0.675rem 0.75rem;
+  cursor: pointer;
+  border: 1px solid #358bdc;
+  color: #358bdc;
+  background-color: #fff;
+  border-radius: 0.25rem;
+  font-size: 0.8rem;
+}
+
+.button-theme-toggler:hover {
+  background-color: #358bdcc4;
+  color: #555;
 }
