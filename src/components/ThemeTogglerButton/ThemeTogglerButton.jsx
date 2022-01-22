@@ -1,5 +1,6 @@
-import { ThemeContext } from "../../context/theme-context";
 import React from "react";
+
+import { ThemeContext } from "../../context/theme-context";
 
 function ThemeTogglerButton() {
   return (

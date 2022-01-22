@@ -1,31 +1,32 @@
 import React from "react";
-import "./RenderForm.css";
 import PropTypes from "prop-types";
 
-export default class RenderForm extends React.Component {
-  render() {
-    const { newTaskText, handleSubmitForm, handlerChangeTextForm } = this.props;
+import "./RenderForm.css";
 
-    return (
-      <form onSubmit={handleSubmitForm} className="div-flex">
-        <input
-          className="input-render"
-          type="text"
-          onChange={handlerChangeTextForm}
-          value={newTaskText}
-          placeholder="Введите текст"
-        />
+const RenderForm = (props) => {
+  const { newTaskText, handleSubmitForm, setNewTaskText } = props;
 
-        <button className="button-submit" type="submit">
-          Добавить
-        </button>
-      </form>
-    );
-  }
-}
+  return (
+    <form onSubmit={handleSubmitForm} className="div-flex">
+      <input
+        className="input-render"
+        type="text"
+        onChange={(e) => setNewTaskText(e.target.value)}
+        value={newTaskText}
+        placeholder="Введите текст"
+      />
+
+      <button className="button-submit" type="submit">
+        Добавить
+      </button>
+    </form>
+  );
+};
+
+export default RenderForm;
 
 RenderForm.propTypes = {
   newTaskText: PropTypes.string.isRequired,
   handleSubmitForm: PropTypes.func.isRequired,
-  handlerChangeTextForm: PropTypes.func.isRequired,
+  setNewTaskText: PropTypes.func.isRequired,
 };

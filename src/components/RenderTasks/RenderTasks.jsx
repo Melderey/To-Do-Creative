@@ -1,25 +1,24 @@
 import React from "react";
 import PropTypes from "prop-types";
+
 import getFiltredTasks from "../../functions/getFiltredTasks";
 import RenderTask from "../RenderTask/RenderTask";
 import "./RenderTasks.css";
 
-export default class RenderTasks extends React.Component {
-  render() {
-    const { tasks, statusSelectTask } = this.props;
+const RenderTasks = (props) => {
+  const { tasks, statusSelectTask } = props;
+  const filtredTasks = getFiltredTasks(tasks, statusSelectTask);
 
-    const filtredTasks = getFiltredTasks(tasks, statusSelectTask);
+  return (
+    <ul>
+      <RenderTask filtredTasks={filtredTasks} {...props} />
+    </ul>
+  );
+};
 
-    return (
-      <ul>
-        <RenderTask filtredTasks={filtredTasks} {...this.props} />
-      </ul>
-    );
-  }
-}
+export default RenderTasks;
 
 RenderTasks.propTypes = {
   statusSelectTask: PropTypes.string.isRequired,
   tasks: PropTypes.array.isRequired,
 };
-
