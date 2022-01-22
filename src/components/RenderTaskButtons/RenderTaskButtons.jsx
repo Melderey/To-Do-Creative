@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import {
   NAME_KEY_CHECKBOX_TASK,
   NAME_EDIT_TASK,
-} from "../../constants/constants";
+} from "../../constants/AppConstants";
 
 const RenderTaskButtons = (props) => {
   const { isCheckboxActive, id, handlerRemoveTask, handlerActivateUiElement } =

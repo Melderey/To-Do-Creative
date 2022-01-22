@@ -2,7 +2,7 @@ import {
   UNCOMPLETED_TASKS,
   COMPLETED_TASKS,
   NAME_KEY_CHECKBOX_TASK,
-} from "../constants/constants";
+} from "../constants/AppConstants";
 
 const getFiltredTasks = (tasks, statusSelectTask) => {
   let renderTasks = [...tasks];

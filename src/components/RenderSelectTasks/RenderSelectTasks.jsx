@@ -6,7 +6,7 @@ import {
   UNCOMPLETED_TASKS,
   COMPLETED_TASKS,
   ALL_TASKS,
-} from "../../constants/constants";
+} from "../../constants/AppConstants";
 
 const RenderSelectTasks = ({ statusSelectTask, setStatusSelectTask }) => {
   return (

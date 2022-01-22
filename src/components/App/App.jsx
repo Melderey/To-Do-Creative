@@ -3,7 +3,7 @@ import { uniqueId } from "lodash";
 
 import "./App.css";
 import checkTaskOverlap from "../../functions/checkTaskOverlap";
-import { ALL_TASKS, BLACK } from "../../constants/constants";
+import { ALL_TASKS, BLACK } from "../../constants/AppConstants";
 import { themesColor } from "../../context/theme-context";
 
 import RenderForm from "../RenderForm/RenderForm";

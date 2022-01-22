@@ -8,7 +8,7 @@ import {
   ORANGE,
   BLUE,
   NAME_KEY_SELECT_TASK,
-} from "../../constants/constants";
+} from "../../constants/AppConstants";
 
 const SelectStatusTask = (props) => {
   const { handlerMapEventValue, id, statusTaskColor } = props;

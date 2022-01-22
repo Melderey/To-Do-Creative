@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import { NAME_KEY_TEXT_TASK } from "../../constants/constants";
+import { NAME_KEY_TEXT_TASK } from "../../constants/AppConstants";
 
 const RenderTaskIsEdit = (props) => {
   const { handlerMapEventValue, newStatusColor, text, isTaskEdit, id } = props;
