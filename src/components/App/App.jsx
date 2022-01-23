@@ -1,10 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { uniqueId } from "lodash";
+import { useDispatch, useSelector } from "react-redux";
 
 import "./App.css";
 import checkTaskOverlap from "../../functions/checkTaskOverlap";
-import { ALL_TASKS, BLACK } from "../../constants/AppConstants";
+import { ALL_TASKS } from "../../constants/AppConstants";
 import { themesColor } from "../../context/theme-context";
+import {
+  add,
+  remove,
+  clearAllTasks,
+  activateUiElement,
+  mapEventValue,
+} from "../../reduxToolkit/todoSlice";
 
 import RenderForm from "../RenderForm/RenderForm";
 import RenderTasks from "../RenderTasks/RenderTasks";
@@ -14,8 +21,9 @@ import RenderHeader from "../RenderHeader/RenderHeader";
 const App = () => {
   const [newTaskText, setNewTaskText] = useState("");
   const [statusSelectTask, setStatusSelectTask] = useState(ALL_TASKS);
-  const [tasks, setTasks] = useState([]);
   const [themeColor, setThemeColor] = useState(themesColor.light);
+  const tasks = useSelector((state) => state.todo);
+  const dispatch = useDispatch();
 
   const toggleTheme = () => {
     setThemeColor((prevState) => {
@@ -30,7 +38,7 @@ const App = () => {
     e.preventDefault();
     setNewTaskText("");
     setStatusSelectTask(ALL_TASKS);
-    setTasks([]);
+    dispatch(clearAllTasks());
   };
 
   const handleSubmitForm = (e) => {
@@ -45,51 +53,21 @@ const App = () => {
       return alert("Такая задача уже существует, введите новую задачу!");
     }
 
-    const newTask = {
-      id: uniqueId(),
-      text: normalizeNewTaskText,
-      isCheckboxActive: false,
-      isTaskEdit: false,
-      statusTaskColor: BLACK,
-    };
-
     setNewTaskText("");
-    setTasks((prevState) => [newTask, ...prevState]);
+    dispatch(add(normalizeNewTaskText));
   };
 
   const handlerRemoveTask = (id) => {
-    setTasks((prevState) => {
-      const newTasks = prevState.filter((task) => task.id !== id);
-      return newTasks;
-    });
+    dispatch(remove(id));
   };
 
   const handlerActivateUiElement = (id, nameKeyTask) => {
-    setTasks((prevState) => {
-      const newTasks = prevState.map((task) => {
-        if (task.id === id) {
-          task[nameKeyTask] = !task[nameKeyTask];
-        }
-        return task;
-      });
-
-      return newTasks;
-    });
+    dispatch(activateUiElement({ id, nameKeyTask }));
   };
 
   const handlerMapEventValue = (e, id, nameKeyTask) => {
-    setTasks((prevState) => {
-      const newValue = e.target.value;
-
-      const newTasks = prevState.map((task) => {
-        if (task.id === id) {
-          task[nameKeyTask] = newValue;
-        }
-        return task;
-      });
-
-      return newTasks;
-    });
+    const newValue = e.target.value;
+    dispatch(mapEventValue({ newValue, id, nameKeyTask }));
   };
 
   useEffect(() => {
