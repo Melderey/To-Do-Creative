@@ -36,6 +36,8 @@
     ]
   },
   "devDependencies": {
+    "mobx": "^6.3.13",
+    "mobx-react-lite": "^3.2.3",
     "react-router-dom": "^6.2.1"
   }
 }

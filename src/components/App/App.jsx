@@ -1,21 +1,23 @@
 import React, { useState, useEffect } from "react";
-import { uniqueId } from "lodash";
+import { observer } from "mobx-react-lite";
 
 import "./App.css";
 import checkTaskOverlap from "../../functions/checkTaskOverlap";
-import { ALL_TASKS, BLACK } from "../../constants/AppConstants";
+import { ALL_TASKS } from "../../constants/AppConstants";
 import { themesColor } from "../../context/theme-context";
+import { observableTodoStore } from "../../mobxStore/TodoStore";
 
 import RenderForm from "../RenderForm/RenderForm";
 import RenderTasks from "../RenderTasks/RenderTasks";
 import RenderSelectTasks from "../RenderSelectTasks/RenderSelectTasks";
 import RenderHeader from "../RenderHeader/RenderHeader";
 
-const App = () => {
+const App = observer(() => {
   const [newTaskText, setNewTaskText] = useState("");
   const [statusSelectTask, setStatusSelectTask] = useState(ALL_TASKS);
-  const [tasks, setTasks] = useState([]);
   const [themeColor, setThemeColor] = useState(themesColor.light);
+
+  const tasks = observableTodoStore.tasks;
 
   const toggleTheme = () => {
     setThemeColor((prevState) => {
@@ -30,7 +32,7 @@ const App = () => {
     e.preventDefault();
     setNewTaskText("");
     setStatusSelectTask(ALL_TASKS);
-    setTasks([]);
+    observableTodoStore.clearAllTasks();
   };
 
   const handleSubmitForm = (e) => {
@@ -45,51 +47,21 @@ const App = () => {
       return alert("Такая задача уже существует, введите новую задачу!");
     }
 
-    const newTask = {
-      id: uniqueId(),
-      text: normalizeNewTaskText,
-      isCheckboxActive: false,
-      isTaskEdit: false,
-      statusTaskColor: BLACK,
-    };
-
     setNewTaskText("");
-    setTasks((prevState) => [newTask, ...prevState]);
+    observableTodoStore.add(normalizeNewTaskText);
   };
 
   const handlerRemoveTask = (id) => {
-    setTasks((prevState) => {
-      const newTasks = prevState.filter((task) => task.id !== id);
-      return newTasks;
-    });
+    observableTodoStore.remove(id);
   };
 
   const handlerActivateUiElement = (id, nameKeyTask) => {
-    setTasks((prevState) => {
-      const newTasks = prevState.map((task) => {
-        if (task.id === id) {
-          task[nameKeyTask] = !task[nameKeyTask];
-        }
-        return task;
-      });
-
-      return newTasks;
-    });
+    observableTodoStore.activateUiElement({ id, nameKeyTask });
   };
 
   const handlerMapEventValue = (e, id, nameKeyTask) => {
-    setTasks((prevState) => {
-      const newValue = e.target.value;
-
-      const newTasks = prevState.map((task) => {
-        if (task.id === id) {
-          task[nameKeyTask] = newValue;
-        }
-        return task;
-      });
-
-      return newTasks;
-    });
+    const newValue = e.target.value;
+    observableTodoStore.mapEventValue({ newValue, id, nameKeyTask });
   };
 
   useEffect(() => {
@@ -123,6 +95,6 @@ const App = () => {
       />
     </div>
   );
-};
+});
 
 export default App;
