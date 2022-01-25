@@ -3,12 +3,10 @@ import { uniqueId } from "lodash";
 
 import { BLACK } from "../constants/AppConstants";
 
-const getInitialState = () => [];
-
 const todoSlice = createSlice({
   name: "todoSlice",
 
-  initialState: getInitialState(),
+  initialState: [],
 
   reducers: {
     add(tasks, action) {
