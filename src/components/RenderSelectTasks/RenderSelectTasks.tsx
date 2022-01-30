@@ -1,19 +1,22 @@
 import React from "react";
-import PropTypes from "prop-types";
 
-import "./RenderSelectTasks.css";
+import { PropsTypes } from "../../types/types";
 import {
   UNCOMPLETED_TASKS,
   COMPLETED_TASKS,
   ALL_TASKS,
 } from "../../constants/AppConstants";
 
-const RenderSelectTasks = ({ statusSelectTask, setStatusSelectTask }) => {
+const RenderSelectTasks = (props: PropsTypes): JSX.Element => {
+  const { statusSelectTask, setStatusSelectTask } = props;
+
   return (
     <select
       value={statusSelectTask}
-      onChange={(e) => setStatusSelectTask(e.target.value)}
-      className="select-render"
+      onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+        setStatusSelectTask(e.target.value)
+      }
+      className="selecter any-form"
     >
       <option value={ALL_TASKS}>Показать все задачи</option>
       <option value={UNCOMPLETED_TASKS}>Показать невыполненные задачи</option>
@@ -23,8 +26,3 @@ const RenderSelectTasks = ({ statusSelectTask, setStatusSelectTask }) => {
 };
 
 export default RenderSelectTasks;
-
-RenderSelectTasks.propTypes = {
-  statusSelectTask: PropTypes.string.isRequired,
-  setStatusSelectTask: PropTypes.func.isRequired,
-};

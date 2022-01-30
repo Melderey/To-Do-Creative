@@ -1,4 +1,4 @@
-.div-flex-wrap {
+.div-aligns-wrap {
   flex-wrap: nowrap;
 }
 
@@ -15,9 +15,9 @@
   padding: 0.2rem 0.4rem;
   margin: 0;
   cursor: pointer;
-  border: 1px solid #dc3545;
-  color: #dc3545;
-  background-color: #fff;
+  border: 1px solid var(--main-red-color);
+  color: var(--main-red-color);
+  background-color: var(--main-white-color);
   border-radius: 0.25rem;
   margin-left: 0.3rem;
   font-size: 0.75rem;
@@ -30,22 +30,22 @@
   padding: 0.2rem 0.4rem;
   margin: 0;
   cursor: pointer;
-  border: 1px solid #6c757d;
-  color: #6c757d;
-  background-color: #fff;
+  border: 1px solid var(--main-gray-color);
+  color: var(--main-gray-color);
+  background-color: var(--main-white-color);
   border-radius: 0.25rem;
   margin-left: 0.3rem;
   font-size: 0.75rem;
 }
 
 .button-remove:hover {
-  background-color: #e47983;
-  color: #555;
+  background-color: var(--hover-pink-color);
+  color: var(--hover-gray-color);
 }
 
 .button-edit:hover {
-  background-color: #f5f254;
-  color: #555;
+  background-color: var(--hover-yellow-color);
+  color: var(--hover-gray-color);
 }
 
 .checkbox-render {

@@ -16,18 +16,33 @@
   src: url("../../fonts/OpenSans/OpenSans-Light.ttf");
 }
 
+:root {
+  --main-black-color: #373737;
+  --main-red-color: #dc3545;
+  --main-blue-color: #358bdc;
+  --main-green-color: #4cb150;
+  --main-gray-color: #6c757d;
+  --border-gray-color: #ced4da;
+  --main-white-color: #fff;
+  --hover-gray-color: #555;
+  --hover-pink-color: #e47983;
+  --hover-blue-color: #358bdcc4;
+  --hover-green-color: #67cf6b;
+  --hover-yellow-color: #f5f254;
+}
+
 .body-dark-theme {
-  background-color: #373737;
+  background-color: var(--main-black-color);
   filter: invert(100) hue-rotate(180deg);
 }
 
 .option-dark-theme option {
-  color: #6c757d;
-  background: #1b1b1b;
+  color: var(--main-gray-color);
+  background: var(--main-black-color);
 }
 
 .container {
-  color: #6c757d;
+  color: var(--main-gray-color);
   max-width: 547px;
   min-width: 35vw;
   margin: 50px auto 50px auto;
@@ -35,7 +50,7 @@
   font: 24px/1.5 "Open Sans", arial, sans-serif;
 }
 
-.div-flex {
+.div-aligns {
   display: flex;
   justify-content: space-between;
 }
@@ -46,20 +61,62 @@
   margin: 0px;
 }
 
-.button-danger {
+.button {
   padding: 0.675rem 0.75rem;
-  margin-left: 1.5rem;
   cursor: pointer;
-  border: 1px solid #dc3545;
-  color: #dc3545;
-  background-color: #fff;
-  border-radius: 0.25rem;
   font-size: 1rem;
+  background-color: var(--main-white-color);
+  border: 1px solid;
+  border-radius: 0.25rem;
+}
+
+.any-form {
+  display: block;
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  font-weight: 400;
+  line-height: 1.5;
+  border: 1px solid var(--border-gray-color);
+  border-radius: 0.25rem;
+  color: var(--main-gray-color);
+  outline-color: var(--main-blue-color);
+}
+
+.selecter {
+  font-size: 0.7rem;
+  margin-top: 0.5rem;
+  margin-bottom: 2.2rem;
+}
+
+.selecter:hover {
+  border: 1px solid var(--hover-blue-color);
+}
+
+.button-danger {
+  margin-left: 1.5rem;
+  border-color: var(--main-red-color);
+  color: var(--main-red-color);
+}
+
+.button-theme-toggler {
+  border-color: var(--main-blue-color);
+  color: var(--main-blue-color);
 }
 
 .button-danger:hover {
-  background-color: #e47983;
-  color: #555;
+  background-color: var(--hover-pink-color);
+  color: var(--hover-gray-color);
+}
+
+.button-theme-toggler:hover {
+  background-color: var(--hover-blue-color);
+  color: var(--hover-gray-color);
+}
+
+.button-div {
+  display: flex;
+  align-items: center;
+  margin: 0px;
 }
 
 li {
@@ -89,19 +146,4 @@ ul {
 
 .status-task-color-blue {
   color: blue;
-}
-
-.button-theme-toggler {
-  padding: 0.675rem 0.75rem;
-  cursor: pointer;
-  border: 1px solid #358bdc;
-  color: #358bdc;
-  background-color: #fff;
-  border-radius: 0.25rem;
-  font-size: 0.8rem;
-}
-
-.button-theme-toggler:hover {
-  background-color: #358bdcc4;
-  color: #555;
 }
