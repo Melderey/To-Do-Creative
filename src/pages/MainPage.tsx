@@ -11,7 +11,7 @@ const MainPage = (): JSX.Element => {
       <p>Это мой учебный проект "Список задач"</p>
       <p>Надеюсь, он поможет тебе планировать свои дела!</p>
       <Link to={TO_DO_PAGE}>
-        <button className="button-theme-toggler">Перейти к приложению</button>
+        <button className="button-theme-toggler button">Перейти к приложению</button>
       </Link>
     </div>
   );
