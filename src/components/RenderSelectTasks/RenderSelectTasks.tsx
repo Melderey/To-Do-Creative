@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ChangeEvent } from "react";
 
 import { PropsTypes } from "../../types/types";
 import {
@@ -13,7 +13,7 @@ const RenderSelectTasks = (props: PropsTypes): JSX.Element => {
   return (
     <select
       value={statusSelectTask}
-      onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+      onChange={(e: ChangeEvent<HTMLSelectElement>) =>
         setStatusSelectTask(e.target.value)
       }
       className="selecter any-form"

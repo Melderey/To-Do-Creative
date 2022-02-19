@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ChangeEvent } from "react";
 
 import "./RenderForm.css";
 import { PropsTypes } from "../../types/types";
@@ -11,7 +11,7 @@ const RenderForm = (props: PropsTypes): JSX.Element => {
       <input
         className="input-render any-form"
         type="text"
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+        onChange={(e: ChangeEvent<HTMLInputElement>) =>
           setNewTaskText(e.target.value)
         }
         value={newTaskText}

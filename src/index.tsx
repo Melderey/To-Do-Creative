@@ -17,7 +17,7 @@ ReactDOM.render(
         <Route path={TO_DO_PAGE} element={<App />} />
         <Route path={MAIN_PAGE} element={<MainPage />} />
       </Routes>
-    </BrowserRouter>{" "}
+    </BrowserRouter>
   </Provider>,
   document.getElementById("root")
 );

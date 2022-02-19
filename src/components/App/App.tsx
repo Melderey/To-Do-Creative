@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, ChangeEvent } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import "./App.css";
@@ -66,7 +66,7 @@ const App = () => {
   };
 
   const handlerMapEventValue = (
-    e: React.ChangeEvent<HTMLSelectElement>,
+    e: ChangeEvent<HTMLSelectElement>,
     id: string,
     nameKeyTask: string
   ) => {

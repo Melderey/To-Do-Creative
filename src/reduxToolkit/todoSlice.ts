@@ -9,7 +9,7 @@ const todoSlice = createSlice({
   initialState: [],
 
   reducers: {
-    add(tasks: TaskTypes[], action): TaskTypes[] {
+    add: (tasks: TaskTypes[], action): TaskTypes[] => {
       const text: string = action.payload;
       const task: TaskTypes = {
         id: Date.now().toString(),
@@ -22,17 +22,17 @@ const todoSlice = createSlice({
       return [task, ...tasks];
     },
 
-    remove(tasks: TaskTypes[], action): TaskTypes[] {
+    remove: (tasks: TaskTypes[], action): any => {
       const id: string = action.payload;
 
       return tasks.filter((task) => task.id !== id);
     },
 
-    clearAllTasks(): [] {
+    clearAllTasks: (): [] => {
       return [];
     },
 
-    activateUiElement(tasks, action): void {
+    activateUiElement: (tasks, action): void => {
       const { id, nameKeyTask }: PropsActionsTypes = action.payload;
 
       tasks.filter((task) => {
@@ -44,7 +44,7 @@ const todoSlice = createSlice({
       });
     },
 
-    mapEventValue(tasks, action): void {
+    mapEventValue: (tasks, action): void => {
       const { newValue, id, nameKeyTask }: PropsActionsTypes = action.payload;
 
       tasks.filter((task) => {

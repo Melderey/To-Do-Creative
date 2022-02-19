@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ChangeEvent } from "react";
 
 import { CombainedTypes } from "../../types/types";
 import {
@@ -16,7 +16,7 @@ const SelectStatusTask = (props: CombainedTypes): JSX.Element => {
   return (
     <select
       value={statusTaskColor}
-      onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+      onChange={(e: ChangeEvent<HTMLSelectElement>) =>
         handlerMapEventValue(e, id, NAME_KEY_SELECT_TASK)
       }
       className="selecter any-form"
