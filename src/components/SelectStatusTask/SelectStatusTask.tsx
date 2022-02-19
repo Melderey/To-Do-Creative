@@ -1,6 +1,6 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React, { ChangeEvent } from "react";
 
+import { CombainedTypes } from "../../types/types";
 import {
   BLACK,
   RED,
@@ -10,14 +10,16 @@ import {
   NAME_KEY_SELECT_TASK,
 } from "../../constants/AppConstants";
 
-const SelectStatusTask = (props) => {
+const SelectStatusTask = (props: CombainedTypes): JSX.Element => {
   const { handlerMapEventValue, id, statusTaskColor } = props;
 
   return (
     <select
       value={statusTaskColor}
-      onChange={(e) => handlerMapEventValue(e, id, NAME_KEY_SELECT_TASK)}
-      className="select-render"
+      onChange={(e: ChangeEvent<HTMLSelectElement>) =>
+        handlerMapEventValue(e, id, NAME_KEY_SELECT_TASK)
+      }
+      className="selecter any-form"
     >
       <option value={BLACK}>Выберите приоритет задачи</option>
       <option value={RED}>Срочно, важно</option>
@@ -29,9 +31,3 @@ const SelectStatusTask = (props) => {
 };
 
 export default SelectStatusTask;
-
-SelectStatusTask.propTypes = {
-  handlerMapEventValue: PropTypes.func.isRequired,
-  id: PropTypes.string.isRequired,
-  statusTaskColor: PropTypes.string.isRequired,
-};

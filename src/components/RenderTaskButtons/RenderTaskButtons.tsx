@@ -1,18 +1,18 @@
 import React from "react";
-import PropTypes from "prop-types";
 
+import { CombainedTypes } from "../../types/types";
 import {
   NAME_KEY_CHECKBOX_TASK,
   NAME_EDIT_TASK,
 } from "../../constants/AppConstants";
 
-const RenderTaskButtons = (props) => {
+const RenderTaskButtons = (props: CombainedTypes): JSX.Element => {
   const { isCheckboxActive, id, handlerRemoveTask, handlerActivateUiElement } =
     props;
 
   return (
     <div>
-      <div className="div-flex buttons-renders">
+      <div className="div-aligns buttons-renders">
         <input
           className="checkbox-render"
           type="checkbox"
@@ -36,10 +36,3 @@ const RenderTaskButtons = (props) => {
 };
 
 export default RenderTaskButtons;
-
-RenderTaskButtons.propTypes = {
-  isCheckboxActive: PropTypes.bool.isRequired,
-  id: PropTypes.string.isRequired,
-  handlerRemoveTask: PropTypes.func.isRequired,
-  handlerActivateUiElement: PropTypes.func.isRequired,
-};

@@ -2,12 +2,12 @@ import React from "react";
 
 import { ThemeContext } from "../../context/theme-context";
 
-function ThemeTogglerButton() {
+function ThemeTogglerButton(): JSX.Element {
   return (
     <ThemeContext.Consumer>
-      {(toggleTheme) => (
-        <button onClick={toggleTheme} className="button-theme-toggler">
-          Очень страшная кнопка <br /> изменения темы
+      {({ toggleTheme }) => (
+        <button onClick={toggleTheme} className="button-theme-toggler button">
+          Изменить тему
         </button>
       )}
     </ThemeContext.Consumer>

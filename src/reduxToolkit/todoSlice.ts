@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { uniqueId } from "lodash";
+import { TaskTypes, PropsActionsTypes } from "../types/types";
 
 import { BLACK } from "../constants/AppConstants";
 
@@ -9,10 +9,10 @@ const todoSlice = createSlice({
   initialState: [],
 
   reducers: {
-    add(tasks, action) {
-      const text = action.payload;
-      const task = {
-        id: uniqueId(),
+    add: (tasks: TaskTypes[], action): TaskTypes[] => {
+      const text: string = action.payload;
+      const task: TaskTypes = {
+        id: Date.now().toString(),
         text: text,
         isCheckboxActive: false,
         isTaskEdit: false,
@@ -22,18 +22,18 @@ const todoSlice = createSlice({
       return [task, ...tasks];
     },
 
-    remove(tasks, action) {
-      const id = action.payload;
+    remove: (tasks: TaskTypes[], action): any => {
+      const id: string = action.payload;
 
       return tasks.filter((task) => task.id !== id);
     },
 
-    clearAllTasks() {
+    clearAllTasks: (): [] => {
       return [];
     },
 
-    activateUiElement(tasks, action) {
-      const { id, nameKeyTask } = action.payload;
+    activateUiElement: (tasks, action): void => {
+      const { id, nameKeyTask }: PropsActionsTypes = action.payload;
 
       tasks.filter((task) => {
         if (task.id === id) {
@@ -44,8 +44,8 @@ const todoSlice = createSlice({
       });
     },
 
-    mapEventValue(tasks, action) {
-      const { newValue, id, nameKeyTask } = action.payload;
+    mapEventValue: (tasks, action): void => {
+      const { newValue, id, nameKeyTask }: PropsActionsTypes = action.payload;
 
       tasks.filter((task) => {
         if (task.id === id) {

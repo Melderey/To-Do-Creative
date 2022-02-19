@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, ChangeEvent } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import "./App.css";
+import { RootState } from "../../types/types";
 import checkTaskOverlap from "../../functions/checkTaskOverlap";
 import { ALL_TASKS } from "../../constants/AppConstants";
 import { themesColor } from "../../context/theme-context";
@@ -19,10 +20,10 @@ import RenderSelectTasks from "../RenderSelectTasks/RenderSelectTasks";
 import RenderHeader from "../RenderHeader/RenderHeader";
 
 const App = () => {
-  const [newTaskText, setNewTaskText] = useState("");
-  const [statusSelectTask, setStatusSelectTask] = useState(ALL_TASKS);
-  const [themeColor, setThemeColor] = useState(themesColor.light);
-  const tasks = useSelector((state) => state.todo);
+  const [newTaskText, setNewTaskText] = useState<string>("");
+  const [statusSelectTask, setStatusSelectTask] = useState<string>(ALL_TASKS);
+  const [themeColor, setThemeColor] = useState<string>(themesColor.light);
+  const tasks = useSelector((state: RootState) => state.todo);
   const dispatch = useDispatch();
 
   const toggleTheme = () => {
@@ -34,16 +35,15 @@ const App = () => {
     });
   };
 
-  const handlerClearAll = (e) => {
-    e.preventDefault();
+  const handlerClearAll = () => {
     setNewTaskText("");
     setStatusSelectTask(ALL_TASKS);
     dispatch(clearAllTasks());
   };
 
-  const handleSubmitForm = (e) => {
+  const handleSubmitForm = (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    const normalizeNewTaskText = newTaskText.trim();
+    const normalizeNewTaskText: string = newTaskText.trim();
 
     if (!normalizeNewTaskText) {
       return alert("Ввведиет новую задачу!");
@@ -57,16 +57,20 @@ const App = () => {
     dispatch(add(normalizeNewTaskText));
   };
 
-  const handlerRemoveTask = (id) => {
+  const handlerRemoveTask = (id: string) => {
     dispatch(remove(id));
   };
 
-  const handlerActivateUiElement = (id, nameKeyTask) => {
+  const handlerActivateUiElement = (id: string, nameKeyTask: string) => {
     dispatch(activateUiElement({ id, nameKeyTask }));
   };
 
-  const handlerMapEventValue = (e, id, nameKeyTask) => {
-    const newValue = e.target.value;
+  const handlerMapEventValue = (
+    e: ChangeEvent<HTMLSelectElement>,
+    id: string,
+    nameKeyTask: string
+  ) => {
+    const newValue: string = e.target.value;
     dispatch(mapEventValue({ newValue, id, nameKeyTask }));
   };
 
@@ -85,11 +89,24 @@ const App = () => {
         newTaskText={newTaskText}
         handleSubmitForm={handleSubmitForm}
         setNewTaskText={setNewTaskText}
+        statusSelectTask={""}
+        setStatusSelectTask={setStatusSelectTask}
+        newStatusColor={""}
+        handlerRemoveTask={handlerRemoveTask}
+        handlerActivateUiElement={handlerActivateUiElement}
+        handlerMapEventValue={handlerMapEventValue}
       />
 
       <RenderSelectTasks
         setStatusSelectTask={setStatusSelectTask}
         statusSelectTask={statusSelectTask}
+        newTaskText={""}
+        setNewTaskText={setNewTaskText}
+        handleSubmitForm={handleSubmitForm}
+        newStatusColor={""}
+        handlerRemoveTask={handlerRemoveTask}
+        handlerActivateUiElement={handlerActivateUiElement}
+        handlerMapEventValue={handlerMapEventValue}
       />
 
       <RenderTasks
@@ -98,6 +115,11 @@ const App = () => {
         handlerRemoveTask={handlerRemoveTask}
         handlerActivateUiElement={handlerActivateUiElement}
         handlerMapEventValue={handlerMapEventValue}
+        newTaskText={""}
+        setNewTaskText={setNewTaskText}
+        setStatusSelectTask={setStatusSelectTask}
+        handleSubmitForm={handleSubmitForm}
+        newStatusColor={""}
       />
     </div>
   );

@@ -4,7 +4,12 @@ import {
   NAME_KEY_CHECKBOX_TASK,
 } from "../constants/AppConstants";
 
-const getFiltredTasks = (tasks, statusSelectTask) => {
+import type { TaskTypes } from "../types/types";
+
+const getFiltredTasks = (
+  tasks: TaskTypes[],
+  statusSelectTask: string
+): TaskTypes[] => {
   let renderTasks = [...tasks];
 
   if (statusSelectTask === UNCOMPLETED_TASKS) {
